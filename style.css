@@ -3,129 +3,134 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #f5f5f5; /* Light grey background */
 }
 
+/* Gradient Background for Navbar */
 header {
-    background-color: #333;
-    color: white;
-    padding: 15px;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 1)); /* Gradient from semi-transparent white to solid white */
+    color: #333333;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Soft shadow */
+    border-radius: 15px;
+}
+
+
+
+
+
+.logo {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #333333; /* Dark grey for the logo */
 }
 
 nav ul {
-    list-style: none;
+    list-style-type: none;
     padding: 0;
-    text-align: center;
+    display: flex;
+    gap: 20px;
 }
 
 nav ul li {
-    display: inline;
-    margin: 0 15px;
+    display: inline-block;
 }
 
 nav ul li a {
     text-decoration: none;
-    color: white;
+    color: #333;
     font-size: 1.2em;
+    padding: 10px 15px;
+    background-color: #f1f1f1;
+    border-radius: 8px; /* Rounded edges for nav links */
+    transition: background-color 0.3s;
 }
 
 nav ul li a:hover {
-    color: #4CAF50;
+    background-color: #4CAF50; /* Green hover effect */
+    color: white;
 }
 
-/* Main Content Section */
-.main-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 30px;
-}
-
-.welcome-section {
+/* Gradient Background for Welcome Section */
+#home {
+    padding: 50px 20px;
     text-align: center;
-    margin-bottom: 30px; /* Space between welcome and introduction */
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 1)); /* Gradient effect on welcome section */
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow */
+    margin-top: 20px;
 }
 
-.welcome-section h1 {
+#home h1 {
     font-size: 3.5em;
     color: #333;
 }
 
-.welcome-section p {
+#home p {
     font-size: 1.5em;
     color: #666;
 }
 
-.introduction-section {
-    text-align: center;
-    margin-bottom: 50px; /* Space between introduction and start quiz button */
+.intro-text {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #555;
 }
 
-.introduction-section h2 {
-    font-size: 2.5em;
-    color: #333;
-}
-
-.introduction-section p {
-    font-size: 1.5em;
-    color: #666;
+.quiz-info {
+    margin-top: 30px;
 }
 
 #start-quiz-btn {
-    background-color: #4CAF50;
+    background-color: #333; /* Dark grey background */
     color: white;
     padding: 15px 30px;
-    border: none;
+    font-size: 1.6em;
+    width: 50%;
+    border-radius: 20px; /* Rounded corners */
+    margin-top: 30px;
     cursor: pointer;
-    font-size: 1.8em;
-    width: 100%;
-    border-radius: 5px;
     transition: background-color 0.3s;
+    border: none;
 }
 
 #start-quiz-btn:hover {
-    background-color: #45a049;
+    background-color: #555; /* Lighter grey on hover */
 }
 
-/* Responsive Design for Mobile and Tablets */
+/* Footer Section */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    border-top-left-radius: 10px; /* Rounded top corners for footer */
+    border-top-right-radius: 10px;
+}
+
+/* Mobile Responsiveness */
 @media (max-width: 768px) {
-    .main-content {
-        padding: 15px;
+    #home h1 {
+        font-size: 2.5em;
     }
 
-    .welcome-section h1 {
-        font-size: 3em;
-    }
-
-    .introduction-section h2 {
-        font-size: 2em;
+    #home p {
+        font-size: 1.2em;
     }
 
     #start-quiz-btn {
         font-size: 2em;
     }
-}
 
-@media (max-width: 480px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
     nav ul li {
-        display: block;
-        margin: 10px 0;
-    }
-
-    .main-content {
-        padding: 10px;
-    }
-
-    .welcome-section h1 {
-        font-size: 2.5em;
-    }
-
-    .introduction-section h2 {
-        font-size: 1.8em;
-    }
-
-    #start-quiz-btn {
-        font-size: 2.5em;
+        margin-bottom: 10px;
     }
 }

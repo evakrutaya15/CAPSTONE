@@ -3,35 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LifeCycle Platform - Dashboard</title>
+    <title>LifeCycle Platform</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Top Navigation Bar -->
+    <!-- Header with Logo and Navigation -->
     <header>
+        <div class="logo">
+            <span class="logo-text">LifeCycle</span> <!-- Logo Updated -->
+        </div>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#health-records">Health Records</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Main Content Section -->
-    <div class="main-content">
-        <div class="welcome-section">
-            <h1>Welcome to LifeCycle Platform</h1>
-            <p>Your go-to resource for navigating end-of-life decisions and transitions.</p>
+    <!-- Main Content -->
+    <section id="home">
+        <h1>Welcome to LifeCycle Platform</h1>
+        <p>Your trusted companion for navigating end-of-life decisions.</p>
+        <p class="intro-text">We help you make informed choices through personalized tools, assessments, and expert guidance. Whether you're planning ahead or seeking clarity, our platform is here to provide the resources you need.</p>
+        
+        <div class="quiz-info">
+            <p>The Death Literacy Questionnaire helps individuals assess their understanding of end-of-life topics such as palliative care, funeral planning, and grief management. It empowers users to make informed decisions and encourages open conversations about mortality.</p>
+            <button id="start-quiz-btn">Start Quiz</button>
         </div>
+    </section>
 
-        <div class="introduction-section">
-            <h2>Introduction</h2>
-            <p>This platform helps individuals make informed decisions about end-of-life planning. We provide valuable resources to help navigate this important part of life with ease and understanding.</p>
-        </div>
-
-        <button id="start-quiz-btn" onclick="window.location.href='login-register.html'">Start Quiz</button>
-    </div>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 LifeCycle Platform. All rights reserved.</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
