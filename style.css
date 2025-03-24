@@ -1,51 +1,75 @@
-/* Base styles - for small devices like mobile */
+/* Global Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     background-color: #f4f4f4;
-    text-align: center;
-}
-
-.container {
-    width: 90%;
-    max-width: 800px; /* Limit the width to prevent it from becoming too wide */
 }
 
 header {
-    margin-bottom: 20px;
-}
-
-h1 {
-    font-size: 3em; /* Increase font size for header */
-    color: #333;
-}
-
-p {
-    font-size: 1.5em; /* Increase font size for paragraph */
-    color: #666;
+    background-color: #333;
+    color: white;
+    padding: 15px;
 }
 
 nav ul {
     list-style: none;
     padding: 0;
     text-align: center;
-    margin: 20px 0;
 }
 
 nav ul li {
-    display: inline-block;
-    margin: 15px;
+    display: inline;
+    margin: 0 15px;
 }
 
 nav ul li a {
     text-decoration: none;
+    color: white;
+    font-size: 1.2em;
+}
+
+nav ul li a:hover {
+    color: #4CAF50;
+}
+
+/* Main Content Section */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.welcome-section {
+    text-align: center;
+    margin-bottom: 30px; /* Space between welcome and introduction */
+}
+
+.welcome-section h1 {
+    font-size: 3.5em;
     color: #333;
-    font-size: 1.5em; /* Increase font size for navigation links */
+}
+
+.welcome-section p {
+    font-size: 1.5em;
+    color: #666;
+}
+
+.introduction-section {
+    text-align: center;
+    margin-bottom: 50px; /* Space between introduction and start quiz button */
+}
+
+.introduction-section h2 {
+    font-size: 2.5em;
+    color: #333;
+}
+
+.introduction-section p {
+    font-size: 1.5em;
+    color: #666;
 }
 
 #start-quiz-btn {
@@ -54,8 +78,8 @@ nav ul li a {
     padding: 15px 30px;
     border: none;
     cursor: pointer;
-    font-size: 1.5em; /* Increase button font size */
-    width: 100%; /* Button takes up full width on mobile */
+    font-size: 1.8em;
+    width: 100%;
     border-radius: 5px;
     transition: background-color 0.3s;
 }
@@ -64,47 +88,44 @@ nav ul li a {
     background-color: #45a049;
 }
 
-/* Media Query for larger devices (Tablets and Desktop) */
-@media (min-width: 600px) {
-    body {
-        padding: 20px; /* More padding for larger screens */
+/* Responsive Design for Mobile and Tablets */
+@media (max-width: 768px) {
+    .main-content {
+        padding: 15px;
+    }
+
+    .welcome-section h1 {
+        font-size: 3em;
+    }
+
+    .introduction-section h2 {
+        font-size: 2em;
     }
 
     #start-quiz-btn {
-        width: auto; /* Button width adjusts for larger screens */
-        font-size: 2em; /* Larger button text */
-    }
-
-    nav ul {
-        display: flex;
-        justify-content: center;
-    }
-
-    nav ul li {
-        display: inline-block;
-        margin: 0 30px;
+        font-size: 2em;
     }
 }
 
-@media (min-width: 1024px) {
-    body {
-        font-size: 18px; /* Increase font size for desktops */
+@media (max-width: 480px) {
+    nav ul li {
+        display: block;
+        margin: 10px 0;
     }
 
-    h1 {
-        font-size: 3em; /* Larger header text on desktops */
+    .main-content {
+        padding: 10px;
     }
 
-    p {
-        font-size: 1.8em; /* Larger paragraph text on desktops */
+    .welcome-section h1 {
+        font-size: 2.5em;
+    }
+
+    .introduction-section h2 {
+        font-size: 1.8em;
     }
 
     #start-quiz-btn {
-        font-size: 2em; /* Larger button text on desktops */
-    }
-
-    nav ul li {
-        margin: 0 40px; /* More spacing between navigation links */
+        font-size: 2.5em;
     }
 }
-

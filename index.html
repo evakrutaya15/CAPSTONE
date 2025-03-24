@@ -3,24 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LifeCycle Platform</title> 
-    <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file -->
+    <title>LifeCycle Platform - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Top Navigation Bar -->
     <header>
-        <h1>Welcome to the LifeCycle Platform</h1>
-        <p>Your go-to resource for learning about death literacy and preparing for end-of-life decisions.</p>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
+    <!-- Main Content Section -->
+    <div class="main-content">
+        <div class="welcome-section">
+            <h1>Welcome to LifeCycle Platform</h1>
+            <p>Your go-to resource for navigating end-of-life decisions and transitions.</p>
+        </div>
 
-    <button id="start-quiz-btn">Start Quiz</button>
+        <div class="introduction-section">
+            <h2>Introduction</h2>
+            <p>This platform helps individuals make informed decisions about end-of-life planning. We provide valuable resources to help navigate this important part of life with ease and understanding.</p>
+        </div>
+
+        <button id="start-quiz-btn" onclick="window.location.href='login-register.html'">Start Quiz</button>
+    </div>
 
     <script src="script.js"></script>
 </body>
