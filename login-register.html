@@ -4,48 +4,123 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LifeCycle Platform - Login / Register</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="stylelog.css">
+    <!-- Add Font Awesome CDN link in the head section -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Login or Create an Account</h1>
-        </header>
-
-        <!-- Login Form -->
-        <div id="login-form-container" class="form-container">
-            <h2>Login</h2>
-            <form id="login-form">
-                <label for="login-email">Email:</label>
-                <input type="email" id="login-email" name="email" required>
-
-                <label for="login-password">Password:</label>
-                <input type="password" id="login-password" name="password" required>
-
-                <button type="submit">Login</button>
-            </form>
-            <p>Don't have an account? <a href="javascript:void(0);" id="show-registration-form">Create an account</a></p>
+    <!-- Header with Logo and Navigation -->
+    <header>
+        <div class="logo">
+            <span class="logo-text">LifeCycle</span> <!-- Logo Updated -->
         </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#health-records">Health Records</a></li>
+                <!-- Using Font Awesome Icon for Login -->
+                <li>
+                    <a href="javascript:void(0);" id="login-icon">
+                        <i class="fas fa-sign-in-alt"></i> <!-- Font Awesome Login Icon -->
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
-        <!-- Registration Form -->
-        <div id="registration-form-container" class="form-container" style="display: none;">
-            <h2>Create an Account</h2>
-            <form id="registration-form">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
+    <!-- Main Content for Login / Register -->
+    <section id="login-section">
+        <div class="container">
+            <!-- Login Form -->
+            <div id="login-form-container" class="form-container">
+                <h2>Sign In</h2>
+                <form id="login-form">
+                    <label for="login-email">Email:</label>
+                    <input type="email" id="login-email" name="email" required>
 
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                    <label for="login-password">Password:</label>
+                    <input type="password" id="login-password" name="password" required>
 
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
+                    <label for="remember-me">
+                        <input type="checkbox" id="remember-me"> Remember me
+                    </label>
+                    <a href="javascript:void(0);" id="forgot-password">Forgot password?</a>
 
-                <button type="submit">Register</button>
-            </form>
-            <p>Already have an account? <a href="javascript:void(0);" id="show-login-form">Login here</a></p>
+                    <button type="submit">Sign In</button>
+                </form>
+                <p>Don't have an account? <a href="javascript:void(0);" id="show-registration-form">Become a member</a></p>
+            </div>
+
+            <!-- Registration Form -->
+            <div id="registration-form-container" class="form-container" style="display: none;">
+                <h2>Create an Account</h2>
+                <form id="registration-form">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+
+                    <button type="submit">Register</button>
+                </form>
+                <p>Already have an account? <a href="javascript:void(0);" id="show-login-form">Sign In here</a></p>
+            </div>
         </div>
+        <div id="login-message"></div> <!-- Message below the login icon -->
+    </section>
 
-    </div>
-    <script src="script.js"></script>
+    <!-- Script for handling the functionality -->
+    <script>
+        // Toggle between login and registration forms
+        document.getElementById('show-registration-form').addEventListener('click', function () {
+            document.getElementById('login-form-container').style.display = 'none';
+            document.getElementById('registration-form-container').style.display = 'block';
+        });
+
+        document.getElementById('show-login-form').addEventListener('click', function () {
+            document.getElementById('registration-form-container').style.display = 'none';
+            document.getElementById('show-login-form').addEventListener('click', function () {
+            document.getElementById('registration-form-container').style.display = 'none';
+            document.getElementById('login-form-container').style.display = 'block';
+        });
+
+        // Handle Login Form Submission
+        document.getElementById('login-form').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent form from submitting
+
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            if (email && password) {
+                // If login is successful
+                document.getElementById('login-message').innerText = "Login successful! You can now start the quiz.";
+                // You can add functionality to show the Start Quiz button or other actions here
+            } else {
+                document.getElementById('login-message').innerText = "Please enter both email and password!";
+            }
+        });
+
+        // Handle Registration Form Submission
+        document.getElementById('registration-form').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent the form from submitting
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (name && email && password) {
+                // Registration successful, show message and switch to login
+                document.getElementById('login-message').innerText = "Registration successful! Please log in.";
+                document.getElementById('registration-form-container').style.display = 'none';
+                document.getElementById('login-form-container').style.display = 'block'; // Show login form
+            } else {
+                document.getElementById('login-message').innerText = "Please fill all fields!";
+            }
+        });
+    </script>
 </body>
-</html>
+</html> 

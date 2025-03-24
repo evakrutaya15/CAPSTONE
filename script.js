@@ -1,57 +1,45 @@
-// Get DOM elements
-const registrationForm = document.getElementById('registration-form');
-const loginForm = document.getElementById('login-form');
-const registrationFormContainer = document.getElementById('registration-form-container');
-const loginFormContainer = document.getElementById('login-form-container');
-
-// Event listeners for form switching
-document.getElementById('show-login-form').addEventListener('click', () => {
-    registrationFormContainer.style.display = 'none';
-    loginFormContainer.style.display = 'block';
+// Switching between Login and Registration
+document.getElementById('show-registration-form').addEventListener('click', function () {
+    document.getElementById('login-form-container').style.display = 'none';
+    document.getElementById('registration-form-container').style.display = 'block';
 });
 
-document.getElementById('show-registration-form').addEventListener('click', () => {
-    loginFormContainer.style.display = 'none';
-    registrationFormContainer.style.display = 'block';
+document.getElementById('show-login-form').addEventListener('click', function () {
+    document.getElementById('registration-form-container').style.display = 'none';
+    document.getElementById('login-form-container').style.display = 'block';
 });
 
-// Handle registration form submission
-registrationForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+// Login Button Functionality
+document.getElementById('login-form').addEventListener('submit', function (e) {
+    e.preventDefault(); // Prevent form from submitting
+    
+    // Add login logic here (e.g., validate credentials, check user data)
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-password').value;
 
+    if (email && password) {
+        // If login is successful, enable Start Quiz button
+        document.getElementById('login-message').innerText = "Login successful! You can now start the quiz.";
+        document.getElementById('start-quiz-btn').disabled = false; // Enable Start Quiz button
+    } else {
+        document.getElementById('login-message').innerText = "Please enter both email and password!";
+    }
+});
+
+// Registration Form Submit Logic
+document.getElementById('registration-form').addEventListener('submit', function (e) {
+    e.preventDefault(); // Prevent form from submitting
+    
+    // Add registration logic here (e.g., validate and store user data)
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
-    // Simple validation
-    if (password.length < 6) {
-        alert('Password should be at least 6 characters long');
-        return;
+    if (name && email && password) {
+        document.getElementById('login-message').innerText = "Registration successful! Please log in.";
+        document.getElementById('registration-form-container').style.display = 'none';
+        document.getElementById('login-form-container').style.display = 'block'; // Show login form
+    } else {
+        document.getElementById('login-message').innerText = "Please fill all fields!";
     }
-
-    // Store the user data in localStorage for now (as a mock database)
-    const user = { name, email, password };
-    localStorage.setItem('user', JSON.stringify(user));
-
-    alert('Registration successful!');
-    loginFormContainer.style.display = 'block'; // Show login form after registration
-    registrationFormContainer.style.display = 'none'; // Hide registration form
-});
-
-// Handle login form submission
-loginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const email = document.getElementById('login-email').value;
-    const password = document.getElementById('login-password').value;
-
-    const storedUser = JSON.parse(localStorage.getItem('user'));
-
-    if (!storedUser || storedUser.email !== email || storedUser.password !== password) {
-        alert('Invalid credentials');
-        return;
-    }
-
-    alert('Login successful!');
-    window.location.href = 'quiz.html'; // Redirect to quiz page
 });
