@@ -1,0 +1,42 @@
+document.getElementById('show-registration-form').addEventListener('click', function () {
+    document.getElementById('login-form-container').style.display = 'none';
+    document.getElementById('registration-form-container').style.display = 'block';
+});
+
+document.getElementById('show-login-form').addEventListener('click', function () {
+    document.getElementById('registration-form-container').style.display = 'none';
+    document.getElementById('login-form-container').style.display = 'block';
+});
+
+// Handle Login Form Submission
+document.getElementById('login-form').addEventListener('submit', function (e) {
+    e.preventDefault(); // Prevent the form from submitting
+
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-password').value;
+
+    if (email && password) {
+        // If login is successful
+        document.getElementById('login-message').innerText = "Login successful! You can now start the quiz.";
+        // You can add functionality to show the Start Quiz button or other actions here
+    } else {
+        document.getElementById('login-message').innerText = "Please enter both email and password!";
+    }
+});
+
+// Handle Registration Form Submission
+document.getElementById('registration-form').addEventListener('submit', function (e) {
+    e.preventDefault(); // Prevent the form from submitting
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    if (name && email && password) {
+        // Registration successful, show message and switch to login
+        document.getElementById('login-message').innerText = "Registration successful! Please log in.";
+        document.getElementById('registration-form-container').style.display = 'none';
+        document.getElementById('login-form-container').style.display = 'block'; // Show login form
+    } else {
+        document.getElementById('login-message').innerText = "Please fill all fields!";
+    }
