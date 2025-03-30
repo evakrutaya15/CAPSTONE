@@ -13,16 +13,23 @@ document.getElementById('show-login-form').addEventListener('click', function ()
 document.getElementById('login-form').addEventListener('submit', function (e) {
     e.preventDefault(); // Prevent form from submitting
     
-    // Add login logic here (e.g., validate credentials, check user data)
     const email = document.getElementById('login-email').value;
     const password = document.getElementById('login-password').value;
 
-    if (email && password) {
-        // If login is successful, enable Start Quiz button
-        document.getElementById('login-message').innerText = "Login successful! You can now start the quiz.";
-        document.getElementById('start-quiz-btn').disabled = false; // Enable Start Quiz button
+    // Check if user data is stored in localStorage
+    const storedUserData = localStorage.getItem('userData');
+    if (storedUserData) {
+        const userData = JSON.parse(storedUserData);
+
+        // Validate login credentials
+        if (email === userData.email && password === userData.password) {
+            document.getElementById('login-message').innerText = "Login successful! You can now start the quiz.";
+            document.getElementById('start-quiz-btn').disabled = false; // Enable Start Quiz button
+        } else {
+            document.getElementById('login-message').innerText = "Incorrect email or password!";
+        }
     } else {
-        document.getElementById('login-message').innerText = "Please enter both email and password!";
+        document.getElementById('login-message').innerText = "No registered users found!";
     }
 });
 
@@ -30,12 +37,21 @@ document.getElementById('login-form').addEventListener('submit', function (e) {
 document.getElementById('registration-form').addEventListener('submit', function (e) {
     e.preventDefault(); // Prevent form from submitting
     
-    // Add registration logic here (e.g., validate and store user data)
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
+    // Check if all fields are filled
     if (name && email && password) {
+        // Store user data in localStorage
+        const userData = {
+            name: name,
+            email: email,
+            password: password
+        };
+        
+        localStorage.setItem('userData', JSON.stringify(userData)); // Save user data to localStorage
+        
         document.getElementById('login-message').innerText = "Registration successful! Please log in.";
         document.getElementById('registration-form-container').style.display = 'none';
         document.getElementById('login-form-container').style.display = 'block'; // Show login form
